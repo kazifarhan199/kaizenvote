@@ -1,0 +1,31 @@
+
+    {%extends 'header.html'%}
+
+    {%block content%}
+    <div class='container'>
+        <br>
+            <h4 style="padding:7px;margin-right: 50px">{{object}} 
+                <a href='{%url "Title-edit" object.id %}' class="waves-effect waves-light btn">
+                Edit Title</a>
+                    
+                <a href='{%url "Options-create" object.id %}' class="waves-effect waves-light btn">
+                Create Option</a>
+
+                <a href='{%url "Title-delete" object.id %}' class="waves-effect waves-light btn">
+                Delete</a>
+                
+            </h4>
+            <hr>
+        <br>
+        {% for option in options %}
+              <div class="collection">
+
+                    <a href="{%url 'Options-edit' option.id object.id %}" class="collection-item active">
+                        {{option}}
+                    </a>
+                </div>
+                    {%empty%}
+                      <h3>No Option Added</h3>
+        {% endfor %}
+</div>
+    {%endblock%}

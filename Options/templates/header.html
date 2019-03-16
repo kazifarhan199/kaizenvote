@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>New Website</title>
+
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+
+  <!-- Nav Bar Start -->
+  <nav >
+    <div class="nav-wrapper" style="background-color: #000;">
+      <a href="/" class="brand-logo" style="padding-left: 5px">LOGO</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <!-- <li><a href="sass.html">Sass</a></li> -->
+        <li><a href='{% url "Title-create"%}'>Create</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a style="background-color: #000; width: 100%;height: 150px"><img src="https://images.wallpaperscraft.com/image/laptop_macbook_iphone_apple_journal_glasses_113949_1280x720.jpg" style="height:150px"> </a></li>
+    <li><a href="/Apps/RedHat/RHCSA/index.html">Create</a></li>
+  </ul>
+  <!-- Nave bar End -->
+   {% block content%}
+
+   {% endblock %} 
+
+<br><br><br><br><br><br><br><br><br><br><br>
+  
+    <!-- Futtor starting -->
+    <footer class="page-footer" style="background-color: #000;padding-bottom: 20px">
+      <div class="container">
+      © 2019 Copyright 
+      <a class="grey-text text-lighten-4 right" href="#!">KaziFarhanuddin</a>
+      </div>
+      <br><br>
+  </footer> 
+  <!-- Futtor Ending -->
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- My main js file -->
+  <script>
+        // For nav bar  
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+
+        // For Popup    
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+  </script>
+
+  </body>
+</html>

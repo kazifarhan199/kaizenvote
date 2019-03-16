@@ -1,0 +1,15 @@
+
+    {%extends 'header.html'%}
+
+    {%block content%}
+    <div class='container'>
+        <br>
+            <h4 style="padding:7px;margin-right: 50px">{{object}} 
+                <a href='{%url "Options-delete" object.id %}' class="waves-effect waves-light btn">
+                Delete</a>
+            </h4>
+            <hr>
+        <br>
+    </div>
+
+    {%endblock%}
