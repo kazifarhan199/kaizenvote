@@ -29,6 +29,11 @@ class Options_delete_view(DeleteView):
     template_name = 'Options/delete_view.html'
     success_url = reverse_lazy('Options-list')		
 
+    def get_success_url(self):
+        url = self.request.META['HTTP_REFERER'].rsplit('/',1)[1]
+        return reverse_lazy('Title-detail', args=[url,])
+
+
 class Options_edit_view(UpdateView):
     model = Options_model
     template_name = 'Options/create_view.html'

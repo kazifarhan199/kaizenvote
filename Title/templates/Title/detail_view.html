@@ -17,15 +17,30 @@
             </h4>
             <hr>
         <br>
-        {% for option in options %}
-              <div class="collection">
 
-                    <a href="{%url 'Options-edit' option.id object.id %}" class="collection-item active">
-                        {{option}}
-                    </a>
-                </div>
-                    {%empty%}
+
+  <div class="row">
+    {% for option in options %}
+    <div class="col s12 m6 l3">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{option.image.url}}">
+        </div>
+        <div class="card-content">
+        <p>Name : <b>{{option}}</b></p>
+        <p>d1 : <b>{{option.d1}}</b></p>
+        <p>d2 : <b>{{option.d2}}</b></p>
+        <p>d3 : <b>{{option.d3}}</b></p>
+        </div>
+        <div class="card-action">
+        <a href="{%url 'Options-edit' option.id object.id %}">Edit</a>
+        <a href="{%url 'Options-delete' option.id object.id %}" style="float:right;color:red">Delete</a>
+        </div>
+      </div>
+    </div>
+    {%empty%}
                       <h3>No Option Added</h3>
         {% endfor %}
+</div>
 </div>
     {%endblock%}

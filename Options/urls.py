@@ -12,7 +12,7 @@ urlpatterns = [
     path('', Options_list_view.as_view(), name='Options-list'),
     path('detail/<pk>', Options_detail_view.as_view(), name='Options-detail'),
     path('create/<pk>', Options_create_view.as_view(), name='Options-create'),
-    path('delete/<pk>', Options_delete_view.as_view(),name='Options-delete'),
+    path('delete/<pk>/<no>', Options_delete_view.as_view(),name='Options-delete'),
     path('edit/<pk>/<no>', Options_edit_view.as_view(),name='Options-edit'),
 ]
 
