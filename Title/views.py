@@ -62,3 +62,12 @@ class Title_edit_view(UpdateView):
     def get_success_url(self):
         url = self.request.META['HTTP_REFERER'].rsplit('/',1)[1]
         return reverse_lazy('Title-detail', args=[url,])
+
+class Title_publish_view(UpdateView):
+    model = Title_model
+    template_name = 'Title/create_view.html'
+    fields = ['publish','end_date']
+
+    def get_success_url(self):
+        url = self.request.META['HTTP_REFERER'].rsplit('/',1)[1]
+        return reverse_lazy('Title-detail', args=[url,])

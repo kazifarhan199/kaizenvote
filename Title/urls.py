@@ -6,6 +6,7 @@ from .views import (
     Title_create_view, 
     Title_delete_view,
     Title_edit_view,
+    Title_publish_view
 )
 
 urlpatterns = [
@@ -14,5 +15,7 @@ urlpatterns = [
     path('create/', Title_create_view.as_view(), name='Title-create'),
     path('delete/<pk>', Title_delete_view.as_view(),name='Title-delete'),
     path('edit/<pk>', Title_edit_view.as_view(),name='Title-edit'),
+    path('publish/<pk>', Title_publish_view.as_view(),name='Title-publish'),
 ]
+
 

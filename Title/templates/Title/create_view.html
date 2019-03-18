@@ -35,9 +35,16 @@
     </script>
     <script>
         if ('edit' == window.location.pathname.split("/")[1]) {
-            document.getElementById('title').innerHTML = 'Edit'            
-            document.getElementById('submit').innerHTML = 'Save'            
+            document.getElementById('title').innerHTML = 'Edit';            
+            document.getElementById('submit').innerHTML = 'Save';
         }
+    </script>
+    <script type="text/javascript">
+        document.querySelector('label[for=id_publish]').style.display = 'none';
+        document.getElementById('id_end_date').type="date";
+        $('#id_publish').attr('checked', true);
+        document.getElementById('submit').innerHTML = 'Publish';        
+        document.getElementById('title').innerHTML = 'Publish';
     </script>
 
 </div>

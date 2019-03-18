@@ -21,7 +21,9 @@ from django.views.static import serve
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("Options/", include("Options.urls")),
-    path("", include("Title.urls")),
+    path("title/", include("Title.urls")),
+    path("", include("Voots.urls")),
+    
     re_path(r'container/media_files/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'container/static_files/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
 ]

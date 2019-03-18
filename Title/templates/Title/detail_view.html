@@ -10,8 +10,12 @@
                     
                 <a href='{%url "Options-create" object.id %}' class="waves-effect waves-light btn">
                 Create Option</a>
+                
+                <a href='{%url "Voots-detail" object.id %}' class="waves-effect waves-light btn blue">PreView</a>
 
-                <a href='{%url "Title-delete" object.id %}' class="waves-effect waves-light btn">
+                <a href="{% url 'Title-publish' object.id%}" class="waves-effect waves-light btn green">Publish</a>
+
+                <a href='{%url "Title-delete" object.id %}' class="waves-effect waves-light btn red">
                 Delete</a>
                 
             </h4>
@@ -31,6 +35,7 @@
         <p>d1 : <b>{{option.d1}}</b></p>
         <p>d2 : <b>{{option.d2}}</b></p>
         <p>d3 : <b>{{option.d3}}</b></p>
+        <p>Votes : <b>{{option.votes}}</b></p>
         </div>
         <div class="card-action">
         <a href="{%url 'Options-edit' option.id object.id %}">Edit</a>
@@ -43,4 +48,5 @@
         {% endfor %}
 </div>
 </div>
+
     {%endblock%}

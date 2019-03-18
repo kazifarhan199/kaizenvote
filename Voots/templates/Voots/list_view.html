@@ -1,0 +1,71 @@
+
+    {%extends 'header.html'%}
+    {%block content%}
+  <div class="container">
+        <div class="col s12" >
+
+            <h1>All Titles </h1>
+
+      <div class="row">
+        <form >
+            {% csrf_token %}
+
+          <div class="input-field inline">
+            <input id="q" type="text" name="q">
+            <label for="email_inline">Search</label>
+          </div>
+          <div class="input-field inline">
+            <button class="btn" >Search</button>
+          </div>                  
+            </form>
+            </div>
+        </div>
+
+        <hr>
+
+        {% for object in object_list %}
+          <div class="collection">
+            <a href="{%url 'Voots-detail' object.id %}" class="collection-item active" >
+                {{object}}
+            </a>
+            </div>
+        {%empty%}
+              <h3>No thing found</h3>            
+        {%endfor%}
+
+
+    </div>
+
+
+    <br>
+<center>
+    {% if is_paginated %}
+      <ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li class="waves-effect"><a href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+    {% endif %}
+
+    {% for i in page_obj.paginator.page_range %}
+      {% if page_obj.number == i %}
+            <li class="active"><a href="?page={{ i }}">{{i}}</a></li>
+      {% else %}
+            <li class=""><a href="?page={{ i }}">{{i}}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}    
+        <li class="waves-effect"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+    {% endif %}
+    </ul>
+    {% endif %}
+    </center>
+
+    <br><br>
+    <br><br>
+
+    <script type="text/javascript">
+    var urlParams = new URLSearchParams(window.location.search);
+    var p = urlParams.get('q');
+    document.getElementById('q').value = p;
+    </script>	
+
+    {%endblock%}
