@@ -4,21 +4,21 @@
     {%block content%}
     <div class='container'>
         <br>
-            <h4 style="padding:7px;margin-right: 50px">{{object}} 
+            <h3 style="padding:7px;margin-right: 50px">{{object}} 
+                {% if not object.publish %}
                 <a href='{%url "Title-edit" object.id %}' class="waves-effect waves-light btn">
                 Edit Title</a>
-                    
-                <a href='{%url "Options-create" object.id %}' class="waves-effect waves-light btn">
-                Create Option</a>
                 
-                <a href='{%url "Voots-detail" object.id %}' class="waves-effect waves-light btn blue">PreView</a>
-
                 <a href="{% url 'Title-publish' object.id%}" class="waves-effect waves-light btn green">Publish</a>
+                {% endif %}
+
+                <a href='{%url "Voots-detail" object.id %}' class="waves-effect waves-light btn blue">View</a>
 
                 <a href='{%url "Title-delete" object.id %}' class="waves-effect waves-light btn red">
                 Delete</a>
                 
-            </h4>
+            </h4> 
+             <h6>{{object.discription}}</h6>
             <hr>
         <br>
 
@@ -37,10 +37,12 @@
         <p>d3 : <b>{{option.d3}}</b></p>
         <p>Votes : <b>{{option.votes}}</b></p>
         </div>
-        <div class="card-action">
-        <a href="{%url 'Options-edit' option.id object.id %}">Edit</a>
-        <a href="{%url 'Options-delete' option.id object.id %}" style="float:right;color:red">Delete</a>
-        </div>
+        {% if not object.publish %}
+            <div class="card-action">
+            <a href="{%url 'Options-edit' option.id object.id %}">Edit</a>
+            <a href="{%url 'Options-delete' option.id object.id %}" style="float:right;color:red">Delete</a>
+            </div>
+        {% endif %}
       </div>
     </div>
     {%empty%}
@@ -49,4 +51,12 @@
 </div>
 </div>
 
+    <!-- Add Option button -->
+    {% if not object.publish %}
+    <div style="padding:20px;right:10px;bottom:20px;position:fixed" >   
+         <a href="{%url 'Options-create' object.id %}" class="btn-floating btn-large waves-effect waves-light red right " ><i class="material-icons">add</i></a>
+    </div>
+    {% endif %}
+
     {%endblock%}
+}

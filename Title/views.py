@@ -57,6 +57,8 @@ class Title_edit_view(UpdateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        if form.instance.publish:
+            raise Exception("Can't edit Published Title")
         return super(Title_edit_view, self).form_valid(form)
 
     def get_success_url(self):

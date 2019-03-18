@@ -24,6 +24,11 @@ class Options_create_view(CreateView):
         url = self.request.META['HTTP_REFERER'].rsplit('/',1)[1]
         return reverse_lazy('Title-detail', args=[url,])
 
+    def form_valid(self, form):
+        if form.instance.title.publish:
+            raise Exception("Can't create option for published title")
+        return super(Options_create_view, self).form_valid(form)
+
 class Options_delete_view(DeleteView):
     model = Options_model
     template_name = 'Options/delete_view.html'
@@ -33,6 +38,10 @@ class Options_delete_view(DeleteView):
         url = self.request.META['HTTP_REFERER'].rsplit('/',1)[1]
         return reverse_lazy('Title-detail', args=[url,])
 
+    def delete(self, request, *args, **kwargs):
+        if self.get_object().title.publish:
+            raise Exception("Can't delete Published Title options")
+        return super(Options_delete_view, self).delete(self.request, *args, **kwargs)
 
 class Options_edit_view(UpdateView):
     model = Options_model
@@ -43,3 +52,7 @@ class Options_edit_view(UpdateView):
         url = self.request.META['HTTP_REFERER'].rsplit('/',1)[1]
         return reverse_lazy('Title-detail', args=[url,])
 
+    def form_valid(self, form):
+        if form.instance.title.publish:
+            raise Exception("Can't edit Published Title options")
+        return super(Options_edit_view, self).form_valid(form)

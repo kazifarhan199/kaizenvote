@@ -20,7 +20,6 @@
             </form>
             </div>
         </div>
-
         <hr>
 
         {% for object in object_list %}
@@ -33,10 +32,7 @@
               <h3>No thing found</h3>            
         {%endfor%}
 
-
     </div>
-
-
     <br>
 <center>
     {% if is_paginated %}
@@ -62,10 +58,16 @@
     <br><br>
     <br><br>
 
+
     <script type="text/javascript">
     var urlParams = new URLSearchParams(window.location.search);
     var p = urlParams.get('q');
     document.getElementById('q').value = p;
     </script>	
 
-    {%endblock%}
+    <!-- Add Option button -->
+    <div style="padding:20px;right:10px;bottom:20px;position:fixed" >   
+         <a href="{%url 'Title-create' %}" class="btn-floating btn-large waves-effect waves-light red right " ><i class="material-icons">add</i></a>
+    </div>
+
+{%endblock%}
