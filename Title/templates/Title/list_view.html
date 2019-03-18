@@ -3,8 +3,8 @@
     {%block content%}
   <div class="container">
         <div class="col s12" >
-
-            <h1>All Titles</h1>
+            
+            <h1>Dashboard</h1>
 
       <div class="row">
         <form >
@@ -24,7 +24,11 @@
 
         {% for object in object_list %}
           <div class="collection">
-            <a href="{%url 'Title-detail' object.id %}" class="collection-item active" >
+            <a href="{%url 'Title-detail' object.id %}" class="collection-item 
+            {% if object.publish %}
+            active
+            {% endif %}
+            " >
                 {{object}}
             </a>
             </div>

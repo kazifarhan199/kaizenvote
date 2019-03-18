@@ -24,8 +24,13 @@
         <p>d3 : <b>{{option.d3}}</b></p>
         </div>
         <div class="card-action">
-        <a href="{%url 'Options-edit' option.id object.id %}">Votes</a>
-        <a style="float:right;color:green">{{option.votes}}</a>
+          <form action="{% url 'Voots-create'%}" method="post">
+            {% csrf_token %}
+
+            <input type="hidden" name="option" value="{{option.id}}">
+            <button type="submit" class="waves-effect waves-light btn">Votes</button>
+          <a class="" style="float:right;color:green">{{option.votes}}</a>
+          </form>
         </div>
       </div>
     </div>
