@@ -40,26 +40,22 @@ class Voots_detail_view(DetailView):
 
 class Voots_create_view(CreateView):
     model = Voots_model
-    fields = []
-    template_name = 'Title/create_view.html'
+    fields = ['option']
 
-    def form_valid(self, form):
+    def form_valid(self, form, *args, **kwargs):
         form.instance.ip = get_client_ip(self.request)
         option = self.request.POST.get('option')
         option = get_object_or_404(Options_model, pk=option)
-        
+        form.instance.title = option.title
+
         if not(option.title.publish):
             raise Exception("Can't vote for unpublished title")
 
-        option.votes += 1
-        option.save()
-        return super(Voots_create_view, self).form_valid(form)
+        return super(Voots_create_view, self).form_valid(form, *args, **kwargs)
 
     def get_success_url(self):
         url = self.request.META['HTTP_REFERER'].rsplit('/',1)[1]
         return reverse_lazy('Voots-detail', args=[url,])
-
-
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
