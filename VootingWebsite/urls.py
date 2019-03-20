@@ -23,6 +23,7 @@ urlpatterns = [
     path("Options/", include("Options.urls")),
     path("title/", include("Title.urls")),
     path("", include("Voots.urls")),
+    path('accounts/', include('Accounts.urls')),
     
     re_path(r'container/media_files/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     re_path(r'container/static_files/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),

@@ -27,9 +27,10 @@
         <!-- <li><a href="sass.html">Sass</a></li> -->
         {% if user.is_authenticated %}
         <li><a href='{% url "Title-list"%}'>Dashboard</a></li>
-        <li><a href='{% url "Title-list"%}'>Logout</a></li>
+        <li><a href='{% url "Accounts-profile"%}'>Profile</a></li>
+        <li><a href='{% url "Accounts-logout"%}'>Logout</a></li>
         {% else %}
-        <li><a href='127.0.0.1:8000/admin/login/?next=http://127.0.0.1:8000/'>Login</a></li>
+        <li><a href='{% url "Accounts-login" %}'>Login</a></li>
         {% endif %}
       </ul>
     </div>

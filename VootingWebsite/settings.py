@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,13 +28,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.0.106','127.0.0.1']
 
-
 # Application definition
+AUTHENTICATION_BACKENDS = ['Accounts.backend.EmailBackend',]
 
 INSTALLED_APPS = [
 	"Title",
 	"Options",
     "Voots",
+    "Accounts",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,18 +90,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    # },
+    # {
+    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    # },
 ]
 
 
@@ -108,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -135,3 +137,5 @@ MEDIA_URL= '/container/media_files/'
 MEDIA_ROOT= os.path.join(BASE_DIR, "container", "media_files")
 
 
+
+LOGIN_REDIRECT_URL = reverse_lazy("Title-list")
