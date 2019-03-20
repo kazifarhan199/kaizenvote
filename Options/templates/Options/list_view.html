@@ -4,7 +4,13 @@
   <div class="container">
         <h1>All Objects</h1>
         <hr>
-
+        <div style="color: red">
+        {% if form.errors %}
+            {% for error in form.errors.values %}
+                {{error}}
+            {% endfor %}
+        {% endif %}
+        </div>
         {% for object in object_list %}
           <div class="collection">
             <a href="{%url 'Options-detail' object.id %}" class="collection-item">

@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
@@ -10,7 +9,7 @@ from django.db.models import Q
 from Options.models import Options_model 
 from .models import Voots_model
 from django.shortcuts import get_object_or_404
-
+from django.shortcuts import redirect
 
 class Voots_list_view(ListView):
     model = Title_model
@@ -35,6 +34,14 @@ class Voots_detail_view(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(Voots_detail_view, self).get_context_data(**kwargs)
+        
+        if('error' in self.request.session):
+            context['error'] = self.request.session['error']
+            self.request.session['error'] = ''
+        if('message' in self.request.session):
+            context['message'] = self.request.session['message']
+            self.request.session['message'] = ''
+
         context['options'] = Options_model.objects.filter(title=context['object'])
         return context
 
@@ -49,8 +56,10 @@ class Voots_create_view(CreateView):
         form.instance.title = option.title
 
         if not(option.title.publish):
-            raise Exception("Can't vote for unpublished title")
+            self.request.session["error"]="Can't vote for unpublished title"
+            return redirect(reverse_lazy('Voots-detail', args=[option.title.id,]))
 
+        self.request.session["message"]="You'r vote has been counted"
         return super(Voots_create_view, self).form_valid(form, *args, **kwargs)
 
     def get_success_url(self):

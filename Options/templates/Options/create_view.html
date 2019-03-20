@@ -6,6 +6,13 @@
         <br>
         <center><h1><span id='title'>Create </span> Option</h1></center>
         <hr>
+        <div style="color: red">
+        {% if form.errors %}
+            {% for error in form.errors.values %}
+                {{error}}
+            {% endfor %}
+        {% endif %}
+        </div>
 
         <div class="container" >
             <center>

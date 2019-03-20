@@ -4,9 +4,27 @@
     {%block content%}
     <div class='container'>
         <br>
-             <h4 style="padding:7px;margin-right: 50px">{{object}}</h4>
+             <h4 style="padding:7px;margin-right: 50px">{{object}}
+             </h4><b>
+                Ending on 
+                <span style="color: red">{{object.end_date}}
+              </b>
+          </span>
+          <br>
+
              <h6>{{object.discription}}</h6>
-            <hr> 
+            <hr>
+            <div style="color: red">
+    {% if form.errors %}
+      {% for error in form.errors.values %}
+        {{error}}
+      {% endfor %}
+    {% endif %}
+    {{error}}
+    </div> 
+            <div style="color: green">
+              <b>{{message}}</b>
+            </div>
         <br>
 
 

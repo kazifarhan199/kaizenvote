@@ -22,7 +22,13 @@
         </div>
 
         <hr>
-
+<div style="color: red">
+    {% if form.errors %}
+      {% for error in form.errors.values %}
+        {{error}}
+      {% endfor %}
+    {% endif %}
+    </div>
         {% for object in object_list %}
           <div class="collection">
             <a href="{%url 'Voots-detail' object.id %}" class="collection-item active" >

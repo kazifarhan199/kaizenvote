@@ -25,7 +25,8 @@ class Options_create_view(CreateView):
 
     def form_valid(self, form):
         if form.instance.title.publish:
-            raise Exception("Can't create option for published title")
+            form.errors["error"]="Can't create option for published title"
+            return super(Options_create_view, self).form_invalid(form, *args, **kwargs)
         return super(Options_create_view, self).form_valid(form)
 
 class Options_delete_view(DeleteView):
@@ -39,7 +40,9 @@ class Options_delete_view(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         if self.get_object().title.publish:
-            raise Exception("Can't delete Published Title options")
+            form.errors["error"]="Can't delete Published Title options"
+            return super(Options_delete_view, self).form_invalid(form, *args, **kwargs)
+
         return super(Options_delete_view, self).delete(self.request, *args, **kwargs)
 
 class Options_edit_view(UpdateView):
@@ -53,5 +56,7 @@ class Options_edit_view(UpdateView):
 
     def form_valid(self, form):
         if form.instance.title.publish:
-            raise Exception("Can't edit Published Title options")
+            form.errors["error"]="Can't edit Published Title options"
+            return super(Options_edit_view, self).form_invalid(form, *args, **kwargs)
+
         return super(Options_edit_view, self).form_valid(form)
