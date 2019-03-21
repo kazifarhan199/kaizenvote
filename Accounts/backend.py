@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 class EmailBackend():
     def authenticate(self, request, username=None, password=None):
         try:
-            return User.objects.get(email=username)
+            email = username.lower()
+            return User.objects.get(email=email)
         except Exception as e:
             print(e)
             return  None

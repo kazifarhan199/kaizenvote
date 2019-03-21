@@ -21,7 +21,7 @@ class CreateUserView(AnonymousRequiredMixin, CreateView):
 	success_url = reverse_lazy('Accounts-login')
 
 	def form_valid(self, form,  *args, **kwargs):
-		email = self.request.POST.get('email')
+		email = self.request.POST.get('email').lower()
 		password1 = self.request.POST.get('password1')
 		password2 = self.request.POST.get('password2')
 
@@ -57,7 +57,7 @@ class UpdateUserView(LoginRequiredMixin, UpdateView):
 		return user
 
 	def form_valid(self, form,  *args, **kwargs):
-		email = self.request.POST.get('email')
+		email = self.request.POST.get('email').lower()
 		if get_user_model().objects.filter(email=email).exists():
 			form.errors["error"]="A user with that email already exists."
 			return super(CreateUserView, self).form_invalid(form, *args, **kwargs)
