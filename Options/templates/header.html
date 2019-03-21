@@ -40,8 +40,14 @@
   </nav>
 
   <ul class="sidenav" id="mobile-demo">
-    <li><a style="background-color: #000; width: 100%;height: 150px"><img src="https://images.wallpaperscraft.com/image/laptop_macbook_iphone_apple_journal_glasses_113949_1280x720.jpg" style="height:150px"> </a></li>
-    <li><a href="/Apps/RedHat/RHCSA/index.html">Create</a></li>
+    <li><a style="background-color: #000; width: 100%;height: 150px"><img src="https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F_Ww1vGgseiLE%2FTItgdt_a8VI%2FAAAAAAAAAAw%2FnxxuaUaMNns%2Fs1600%2Fkaizen.jpg&f=1" style="height:150px"> </a></li>
+        {% if user.is_authenticated %}
+        <li><a href='{% url "Title-list"%}'>Dashboard</a></li>
+        <li><a href='{% url "Accounts-profile"%}'>Profile</a></li>
+        <li><a href='{% url "Accounts-logout"%}'>Logout</a></li>
+        {% else %}
+        <li><a href='{% url "Accounts-login" %}'>Login</a></li>
+        {% endif %}
   </ul>
   <!-- Nave bar End -->
    {% block content%}
