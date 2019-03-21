@@ -1,5 +1,0 @@
-Django==2.1.7
-django-braces==1.13.0
-gunicorn==19.9.0
-Pillow==5.4.1
-pytz==2018.9
