@@ -6,6 +6,7 @@
         <br>
              <h4 style="padding:7px;margin-right: 50px">{{object}}
              </h4><b>
+              {% if object.publish %}
               {% if object.end_date %}
                 {% if date_now > object.end_date %} 
                   Polls have 
@@ -18,6 +19,10 @@
                 Polls 
                 <span style="color: red">Not going to end
                 {%endif%}
+              {% else %}
+                Polls Have
+                <span style="color: red">Not started 
+              {% endif %}
               </b>
           </span>
           <br>
