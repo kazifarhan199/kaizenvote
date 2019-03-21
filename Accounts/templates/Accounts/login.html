@@ -5,9 +5,12 @@
 <center>
     
 <h1>Login</h1>
+<hr>
 </center>
+<div style="color: red">
+	
 {% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
+<p>Your email and password didn't match. Please try again.</p>
 {% endif %}
 
 {% if next %}
@@ -18,6 +21,7 @@
     <p>Please login to see this page.</p>
     {% endif %}
 {% endif %}
+</div>
 
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
@@ -33,5 +37,8 @@
 </div>
 <script type="text/javascript">
 	document.querySelector("label[for=id_username]").innerHTML = "Email"
+</script>
+<script type="text/javascript">
+	document.querySelector('.errorlist').style.display = 'none'
 </script>
 {% endblock %}
