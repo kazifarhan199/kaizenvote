@@ -10,7 +10,7 @@ from Options.models import Options_model
 from .models import Voots_model
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
-
+import datetime
 class Voots_list_view(ListView):
     model = Title_model
     paginate_by = 7
@@ -43,6 +43,7 @@ class Voots_detail_view(DetailView):
             self.request.session['message'] = ''
 
         context['options'] = Options_model.objects.filter(title=context['object'])
+        context['date_now'] = datetime.datetime.now().date()
         return context
 
 class Voots_create_view(CreateView):
@@ -55,12 +56,22 @@ class Voots_create_view(CreateView):
         option = get_object_or_404(Options_model, pk=option)
         form.instance.title = option.title
 
+        #Handelling Unpublished titles
         if not(option.title.publish):
             self.request.session["error"]="Can't vote for unpublished title"
             return redirect(reverse_lazy('Voots-detail', args=[option.title.id,]))
+        
+        #Handelling If user trys to vote more than once for I title
         if Voots_model.objects.filter(title=form.instance.title, ip=form.instance.ip).exists():
             self.request.session["error"]="You can only place one vote"
             return redirect(reverse_lazy('Voots-detail', args=[option.title.id,]))
+        
+        #Handelling Expired titles
+        if form.instance.title.end_date:
+            if form.instance.title.end_date < datetime.datetime.now().date():
+                self.request.session["error"]="Can't vote for expired titles"
+                return redirect(reverse_lazy('Voots-detail', args=[option.title.id,]))
+
         self.request.session["message"]="You'r vote has been counted"
         return super(Voots_create_view, self).form_valid(form, *args, **kwargs)
 

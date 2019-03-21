@@ -6,8 +6,18 @@
         <br>
              <h4 style="padding:7px;margin-right: 50px">{{object}}
              </h4><b>
+              {% if object.end_date %}
+                {% if date_now > object.end_date %} 
+                  Polls have 
+                <span style="color: red">expired on {{object.end_date}} 
+                {%else%}
                 Ending on 
                 <span style="color: red">{{object.end_date}}
+                {%endif%}
+              {% else %}
+                Polls 
+                <span style="color: red">Not going to end
+                {%endif%}
               </b>
           </span>
           <br>
