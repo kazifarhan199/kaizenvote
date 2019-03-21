@@ -58,7 +58,9 @@ class Voots_create_view(CreateView):
         if not(option.title.publish):
             self.request.session["error"]="Can't vote for unpublished title"
             return redirect(reverse_lazy('Voots-detail', args=[option.title.id,]))
-
+        if Voots_model.objects.filter(title=form.instance.title, ip=form.instance.ip).exists():
+            self.request.session["error"]="You can only place one vote"
+            return redirect(reverse_lazy('Voots-detail', args=[option.title.id,]))
         self.request.session["message"]="You'r vote has been counted"
         return super(Voots_create_view, self).form_valid(form, *args, **kwargs)
 
