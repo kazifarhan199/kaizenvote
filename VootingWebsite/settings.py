@@ -1,3 +1,4 @@
+import django-heroku
 """
 Django settings for VootingWebsite project.
 
@@ -150,3 +151,4 @@ LOGIN_REDIRECT_URL = reverse_lazy("Title-list")
 # EMAIL_PORT = 587
 # EMAIL_HOST_USER = auths[0]
 # EMAIL_HOST_PASSWORD = auths[1]
+django_heroku.settings(locals())
