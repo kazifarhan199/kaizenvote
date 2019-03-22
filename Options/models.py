@@ -9,7 +9,7 @@ class Options_model(models.Model):
 	d2 = models.CharField(max_length=400, blank=True)
 	d3 = models.CharField(max_length=400, blank=True)
 	votes = models.IntegerField(default=0)
-	image = models.TextField()
+	image = models.CharField(max_length=70000)
 	url = models.TextField(default="https://www.flipkart.com/?affid=kazifarha")
 
 	def __str__(self):
