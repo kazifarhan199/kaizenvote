@@ -10,7 +10,7 @@
         {% endif %}
         </div>
         <br>
-            <h3 style="padding:7px;margin-right: 50px">{{object}} 
+            <h4 style="padding:7px;margin-right: 50px">{{object}} 
                 {% if not object.publish %}
                 <a href='{%url "Title-edit" object.id %}' class="waves-effect waves-light btn">
                 Edit Title</a>
@@ -34,7 +34,7 @@
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
-          <img src="{{option.image.url}}">
+          <img src="{{option.image}}">
         </div>
         <div class="card-content">
         <p>Name : <b>{{option}}</b></p>
