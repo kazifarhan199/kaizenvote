@@ -48,7 +48,7 @@
     <div class="col s12 m6 l3">
       <div class="card">
         <div class="card-image">
-          <img src="{{option.image.url}}">
+          <img src="{{option.image}}">
         </div>
         <div class="card-content">
         <p>Name : <b>{{option}}</b></p>
@@ -64,6 +64,13 @@
           <a class="" style="float:right;color:green">{{option.votes}}</a>
           </form>
         </div>
+
+        <div class="card-action">
+          <center>          
+            <a href="{{option.url}}" style="color:green" target="_">Buy Now</a>
+          </center>
+        </div>
+
       </div>
     </div>
     {%empty%}
