@@ -26,7 +26,7 @@ SECRET_KEY = 'k_(vx7o4b5n68l%a#=bongh)bs+64$$4vlyn@6xj@mz7=#m&=@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.106','127.0.0.1']
+ALLOWED_HOSTS = ['*','127.0.0.1']
 
 # Application definition
 AUTHENTICATION_BACKENDS = ['Accounts.backend.EmailBackend',]
@@ -140,13 +140,13 @@ MEDIA_ROOT= os.path.join(BASE_DIR, "container", "media_files")
 
 LOGIN_REDIRECT_URL = reverse_lazy("Title-list")
 
-# Reading Authentication Email and password from file
-with open("../auth.txt", 'r', encoding='utf8') as MyFile:
-    auths = MyFile.read().split('\n')
+# # Reading Authentication Email and password from file
+# with open("../auth.txt", 'r', encoding='utf8') as MyFile:
+#     auths = MyFile.read().split('\n')
 
 # Setting up email
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = auths[0]
-EMAIL_HOST_PASSWORD = auths[1]
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = auths[0]
+# EMAIL_HOST_PASSWORD = auths[1]
