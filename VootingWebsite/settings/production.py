@@ -18,7 +18,7 @@ DATABASES = {
         'NAME': 'VootingWebsite',
         'USER': 'VootingWebsite',
         'PASSWORD': 'VootingWebsite',
-        'HOST': 'localhost',
+        'HOST': '',
         'PORT': '',
     }
 }
