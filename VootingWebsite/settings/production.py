@@ -13,17 +13,6 @@ ALLOWED_HOSTS = ['*', ]
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'VootingWebsite',
-        'USER': 'VootingWebsite',
-        'PASSWORD': 'VootingWebsite',
-        'HOST': '',
-        'PORT': '',
-    }
-}
-
 if 'DATABASE_URL' in os.environ:
     DATABASES = {'default': dj_database_url.config()}
 
