@@ -1,11 +1,7 @@
 {
     "_meta": {
         "hash": {
-<<<<<<< HEAD
-            "sha256": "7522e85fb1d2e6cd527731f4ae3a364a39915d30d7d1002c4fafe68c79afad23"
-=======
             "sha256": "c04b9d4eaa868cb96f821b550ab45cf68198c9f688551fbd33a331818d61e035"
->>>>>>> 9d13620fe36d53d3a37e7722cd03456c7dfe358c
         },
         "pipfile-spec": 6,
         "requires": {
@@ -115,9 +111,6 @@
                 "sha256:26c0b32e437e54a18161324a2fca3c4b9846b74a8dccddd843113109e1116b32",
                 "sha256:c894d57500a4cd2d5c71114aaab77dbab5eabd9022308ce5ac9bb93a60a6f0c7"
             ],
-<<<<<<< HEAD
-            "version": "==2019.2"
-=======
             "version": "==2018.9"
         },
         "whitenoise": {
@@ -126,7 +119,6 @@
                 "sha256:42133ddd5229eeb6a0c9899496bdbe56c292394bf8666da77deeb27454c0456a"
             ],
             "version": "==4.1.2"
->>>>>>> 9d13620fe36d53d3a37e7722cd03456c7dfe358c
         }
     },
     "develop": {}

@@ -1,3 +1,3 @@
 {
-    "python.pythonPath": "/home/kazi/.local/share/virtualenvs/kaizenvote-b7D3c1k1/bin/python"
+    "python.pythonPath": "env/bin/python"
 }

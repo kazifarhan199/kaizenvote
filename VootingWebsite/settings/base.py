@@ -14,19 +14,10 @@ import os
 from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = os.path.dirname(os.path.abspath(__name__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'k_(vx7o4b5n68l%a#=bongh)bs+64$$4vlyn@6xj@mz7=#m&=@'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = ['192.168.0.106','127.0.0.1', '*']
 
 # Application definition
 AUTHENTICATION_BACKENDS = ['Accounts.backend.EmailBackend',]
@@ -75,17 +66,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'VootingWebsite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -125,31 +105,14 @@ USE_TZ = True
 
 STATIC_URL = '/container/static_files/'
 
-# STATICFILES_DIRS= [
-#     os.path.join(BASE_DIR, "container"),
-# ]
-
 STATIC_ROOT= os.path.join(BASE_DIR, "container", "static_files")
 
 
 MEDIA_URL= '/container/media_files/'
-
 MEDIA_ROOT= os.path.join(BASE_DIR, "container", "media_files")
-
-
 
 LOGIN_REDIRECT_URL = reverse_lazy("Title-list")
 
-# Reading Authentication Email and password from file
-# with open("../auth.txt", 'r', encoding='utf8') as MyFile:
-#     auths = MyFile.read().split('\n')
-
-# # Setting up email
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = auths[0]
-# EMAIL_HOST_PASSWORD = auths[1]
 if 'DATABASE_URL' in os.environ:
     import dj_database_url
     DATABASES = {'default': dj_database_url.config()}

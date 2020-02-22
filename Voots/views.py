@@ -1,16 +1,19 @@
+import datetime
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView
 from django.views.generic.edit import UpdateView
 from django.urls import reverse_lazy
-from Title.models import Title_model
 from django.db.models import Q
 from Options.models import Options_model 
-from .models import Voots_model
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
-import datetime
+from Title.models import Title_model
+from .models import Voots_model
+from .utils import get_client_ip
+
+
 class Voots_list_view(ListView):
     model = Title_model
     paginate_by = 7
@@ -27,6 +30,7 @@ class Voots_list_view(ListView):
         else:
             context = context.all().order_by('-id')
         return context
+
 
 class Voots_detail_view(DetailView):
     model = Title_model
@@ -45,6 +49,7 @@ class Voots_detail_view(DetailView):
         context['options'] = Options_model.objects.filter(title=context['object'])
         context['date_now'] = datetime.datetime.now().date()
         return context
+
 
 class Voots_create_view(CreateView):
     model = Voots_model
@@ -79,10 +84,3 @@ class Voots_create_view(CreateView):
         url = self.request.META['HTTP_REFERER'].rsplit('/',1)[1]
         return reverse_lazy('Voots-detail', args=[url,])
 
-def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
