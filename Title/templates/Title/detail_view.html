@@ -53,6 +53,7 @@
     </div>
     {%empty%}
                       <h3>No Option Added</h3>
+                      <div style="height: 190px;"></div>
         {% endfor %}
 </div>
 </div>
@@ -65,4 +66,7 @@
     {% endif %}
 
     {%endblock%}
-}
+
+  {% block blankspace %}
+    <div style="height: 360px;"></div>
+  {% endblock %} 
