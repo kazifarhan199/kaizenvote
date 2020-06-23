@@ -6,7 +6,11 @@ class EmailBackend():
     def authenticate(self, request, username=None, password=None):
         try:
             email = username.lower()
-            user = User.objects.get(email=email)
+            try:
+                user = User.objects.get(email=email)
+            except Exception:
+                user = User.objects.get(username=username)
+
         except Exception as e:
             print(e)
             return  None
