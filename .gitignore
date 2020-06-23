@@ -1,3 +1,6 @@
+# VScode
+.vscode/
+
 # static and media files
 static/
 media/
