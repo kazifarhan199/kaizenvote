@@ -26,10 +26,20 @@ You don't need to go into admin panel for this project but if you need/want to y
 2. and login at 
    ` 127.0.0.1:8000/admin `
 
+#### Using docker
+
+1. Run it
+    `docker-compose up`
+
+To enable password reset, enter your email credentials in 'env_email.env' file, then run using the above command   
+
+
+
 ## Dependency
 
 1. django
 2. django-braces
+    
 
 ## File Structure
 
