@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+  kaizen_djangoapp:
+    build: .
+    volumes:
+      - .:/usr/src/app
+      - static:/usr/src/app/static/
+      - media:/usr/src/app/media/
+    depends_on:
+      - kaizen_database
+    env_file:
+      - env_db.env
+      - env_email.env
+    command: >
+      bash -c "python manage.py collectstatic --no-input && 
+      python manage.py makemigrations && 
+      python manage.py migrate --settings VootingWebsite.settings.production && 
+      gunicorn --bind :8000 --limit-request-field_size 819000 VootingWebsite.wsgi"
+
+  kaizen_nginx:
+    image: nginx:1.13
+    ports:
+      - 8000:8000
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/local.conf
+      - static:/static/
+      - media:/media/
+    depends_on:
+      - kaizen_djangoapp
+      - kaizen_database
+
+  kaizen_database:
+    image: postgres:10
+    env_file:
+      - env_db.env
+    volumes:
+      - database_volume:/var/lib/postgresql/data
+
+volumes:
+  database_volume:
+  static:
+  media:
+      
+
