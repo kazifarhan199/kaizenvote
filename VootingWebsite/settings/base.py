@@ -103,16 +103,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 
-STATIC_URL = '/container/static_files/'
+STATIC_URL = '/static/'
+STATIC_ROOT= os.path.join(BASE_DIR, "static")
 
-STATIC_ROOT= os.path.join(BASE_DIR, "container", "static_files")
-
-
-MEDIA_URL= '/container/media_files/'
-MEDIA_ROOT= os.path.join(BASE_DIR, "container", "media_files")
+MEDIA_URL= '/media/'
+MEDIA_ROOT= os.path.join(BASE_DIR, "media")
 
 LOGIN_REDIRECT_URL = reverse_lazy("Title-list")
-
-if 'DATABASE_URL' in os.environ:
-    import dj_database_url
-    DATABASES = {'default': dj_database_url.config()}
