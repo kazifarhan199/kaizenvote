@@ -1,4 +1,8 @@
 # kaizenvote
+
+[![Heroku App Status](http://heroku-shields.herokuapp.com/kaizenvote)](https://kaizenvote.herokuapp.com)
+![GitHub](https://img.shields.io/github/license/kazifarhanuddin/kaizenvote)
+
 On Kaizenvote you can create you own polls on any topic you like, Kizenvote also  tracks the IP of the vote caster, so as to not allow one user to cast more than one vote, making it more robust without the vote caster needing to revel his/her identity  
 
 You can see the deployed instance [kaizenvote.herokuapp.com](https://kaizenvote.herokuapp.com/)
