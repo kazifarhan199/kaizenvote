@@ -1,6 +1,7 @@
 # kaizenvote
 
 [![Heroku App Status](http://heroku-shields.herokuapp.com/kaizenvote)](https://kaizenvote.herokuapp.com)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/kazifarhanuddin/kaizenvote)
 ![GitHub](https://img.shields.io/github/license/kazifarhanuddin/kaizenvote)
 
 On Kaizenvote you can create you own polls on any topic you like, Kizenvote also  tracks the IP of the vote caster, so as to not allow one user to cast more than one vote, making it more robust without the vote caster needing to revel his/her identity  
@@ -33,13 +34,17 @@ You don't need to go into admin panel for this project but if you need/want to y
 
 To enable password reset, enter your email credentials in 'env_email.env' file, then run using the above command   
 
+## Docker image
+
+https://hub.docker.com/r/kazifarhan199/kaizenvote
+
 
 
 ## Dependency
 
 1. django
 2. django-braces
-    
+   
 
 ## File Structure
 
