@@ -11,17 +11,17 @@ DEBUG = False
 ALLOWED_HOSTS = ['*', ]
 
 # For docker
-if os.getenv('POSTGRES_DB'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.getenv('POSTGRES_DB'),
-            'USER': os.getenv('POSTGRES_USER'),
-            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-            'HOST': 'kaizen_database',  # <-- IMPORTANT: same name as docker-compose service!
-            'PORT': '5432',
-        }
-    }
+# if os.getenv('POSTGRES_DB'):
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': os.getenv('POSTGRES_DB'),
+#             'USER': os.getenv('POSTGRES_USER'),
+#             'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+#             'HOST': 'kaizen_database',  # <-- IMPORTANT: same name as docker-compose service!
+#             'PORT': '5432',
+#         }
+#     }
 
 # For herou
 if 'DATABASE_URL' in os.environ:
