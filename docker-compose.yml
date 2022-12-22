@@ -17,6 +17,7 @@ services:
       python manage.py makemigrations && 
       python manage.py migrate --settings VootingWebsite.settings.production && 
       gunicorn --bind :8000 --limit-request-field_size 819000 VootingWebsite.wsgi"
+      ./manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')"
 
   kaizen_nginx:
     image: nginx:1.13
@@ -31,7 +32,7 @@ services:
       - kaizen_database
 
   kaizen_database:
-    image: postgres:10
+    image: postgres:14
     env_file:
       - env_db.env
     volumes:
