@@ -6,27 +6,35 @@ import dj_database_url
 SECRET_KEY = 'k_(vx7o4b5n68l%a#=bongh)bs+64$$4vlyn@6xj@mz7=#m&=@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*', ]
 
 # For docker
-# if os.getenv('POSTGRES_DB'):
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#             'NAME': os.getenv('POSTGRES_DB'),
-#             'USER': os.getenv('POSTGRES_USER'),
-#             'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-#             'HOST': 'kaizen_database',  # <-- IMPORTANT: same name as docker-compose service!
-#             'PORT': '5432',
-#         }
-#     }
+if os.getenv('POSTGRES_DB'):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv('POSTGRES_DB'),
+            'USER': os.getenv('POSTGRES_USER'),
+            'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+            'HOST': 'kaizen_database',  # <-- IMPORTANT: same name as docker-compose service!
+            'PORT': '5432',
+        }
+    }
 
 # For herou
-if 'DATABASE_URL' in os.environ:
+elif 'DATABASE_URL' in os.environ:
     import dj_database_url
     DATABASES = {'default': dj_database_url.config()}
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 print(os.getenv('EMAIL'))
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
